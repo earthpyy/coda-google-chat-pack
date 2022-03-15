@@ -1,7 +1,7 @@
 import * as coda from '@codahq/packs-sdk'
 
 function replaceNewline(message: string): string {
-  return message.replace('\n', '\\n')
+  return message.replace(/\n/g, '\\n')
 }
 
 export const pack = coda.newPack()
