@@ -5,7 +5,7 @@ export const pack = coda.newPack()
 pack.addNetworkDomain('googleapis.com')
 
 pack.addFormula({
-  name: 'SendToWebHook',
+  name: 'SendToWebhook',
   description: "Send message to Google Chat's webhook",
   isAction: true,
   resultType: coda.ValueType.String,
