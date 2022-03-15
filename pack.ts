@@ -1,5 +1,9 @@
 import * as coda from '@codahq/packs-sdk'
 
+function replaceNewline(message: string): string {
+  return message.replace('\n', '\\n')
+}
+
 export const pack = coda.newPack()
 
 pack.addNetworkDomain('googleapis.com')
@@ -29,7 +33,7 @@ pack.addFormula({
   ],
   execute: async ([webhookUrl, message, threadKey], context) => {
     const isJSON = message.startsWith('{') && message.endsWith('}')
-    const payload = isJSON ? JSON.parse(message) : { text: message }
+    const payload = isJSON ? JSON.parse(replaceNewline(message)) : { text: message }
 
     if (threadKey) {
       webhookUrl = coda.withQueryParams(webhookUrl, {
